@@ -1,0 +1,18 @@
+sample(10000,35) #universo,extrae una muestra de tamaño n aleatoria
+#creación de una base de datos
+#variable: nombre, edad,sexo,tipo de educación
+
+nom<-c("Sergio","Alan","Betzabeth","Judith","Rodrigo","Eric","Diego","Angel")
+edad<-c(36,20,23,20,21,21,22,21)
+sexo<-c("hombre","hombre","mujer","mujer","hombre","hombre","hombre","hombre")
+edu<-c("Pública","Pública","Pública","Pública","Privada","Pública","Pública","Pública")
+
+base1<-matrix(c(nom,edad,sexo,edu))
+base1.1<-data.frame(nom,edad,sexo,edu)
+
+#funcion table
+#se utiliza para conocer la frecuencia de las variables
+table(base1.1$edad)
+attach(base1.1) #guarda la base
+table(edad)
+summary(base1.1$edad)
