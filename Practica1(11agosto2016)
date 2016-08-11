@@ -16,3 +16,9 @@ table(base1.1$edad)
 attach(base1.1) #guarda la base
 table(edad)
 summary(base1.1$edad)
+#importar base de datos
+#para importar base de datos se utiliza foreign
+install.packages("foreign")
+require(foreign)
+sociodem<-read.dbf("C://Users//SALA-C9//Desktop//Base ENOE//base.dbf")
+table(sociodem$SEX)
