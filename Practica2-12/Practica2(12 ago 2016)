@@ -1,0 +1,35 @@
+rm(list=ls())
+#definir un directorio raíz
+setwd<-("C://Users//SALA-C27//Desktop//Base Enoe")
+sdem<-data.frame(read.dbf("base.dbf"))
+View(sociodem)
+
+install.packages("questionr")
+require(questionr)
+wtd.table(sociodem$POS_OCU)
+wtd.table(sociodem$POS_OCU,na.show=TRUE)
+
+#frecuencias con datos ponderados
+wtd.table(sociodem$POS_OCU,weights=sociodem$FAC,na.show=TRUE)
+
+#TABULADOS CON DATOS MUESTRALES (SIN PONDERAR)
+wtd.table(sociodem$SEX,weights=sociodem$POS_OCU)
+
+#TABULADOS CON DATOS PONDERADOS
+wtd.table(sociodem$SEX,sociodem$POS_OCU,weights=sociodem$FAC)
+
+#Obtener la frecuencia de la variable clase 1(muestral)
+wtd.table(sociodem$CLASE1)
+wtd.table(sociodem$CLASE1,weights=sociodem$FAC,na.show=TRUE)
+#obtener en tabulado sexo y entidad (muestral y ponderado)
+wtd.table(sociodem$ENT,sociodem$SEX,weights=sociodem$FAC)
+wtd.table(sociodem$SEX,weights=sociodem$ENT)
+
+
+#ETIQUETAR EN OTRA VARIABLE
+sociodem$SEXO<-factor(sociodem$SEX,levels=c(1,2),labels=c("Hombre,Mujer"))
+wtd.table(sociodem$SEX)
+View(sociodem)
+#ETIQUETAR EN OTRA VARIABLE
+sociodem$POS_OCU<-factor(sociodem$POS_OCU,levels=c(1,2,3,4,5),labels=c("Subordinados y Remunerados","Empleadores","Cuenta Propia","Sin Pago","NE"))
+wtd.table(sociodem$POS_OCU)
