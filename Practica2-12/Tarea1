@@ -1,0 +1,15 @@
+sociodem<-read.dbf ( "C://Users//Bethh//Desktop // SDEMT215.dbf")
+sociodem $ Clase1 <-factor (sociodem $ Clase1, niveles = c (1,2), etiquetas = c ( "PEA", "PENA"))
+wtd.table (sociodem $ Clase1)
+sociodem $ Clase2 <-factor (sociodem $ Clase2, niveles = c (1,2,3,4), etiquetas = c ( "Población Ocupada", "Población Desocupada","Disponibles","No Disponibles"))
+wtd.table (sociodem $ Clase2)
+sociodem $ Clase3 <-factor (sociodem $ Clase3, niveles = c (1,2,3,4,5,6,7), etiquetas = c ( "Ocupado Pleno", "Ocupado Sin Pago"_
+"Ocupado ausente con Nexo Laboral","Ocupado con Retorno Asegurado","Desocupados Iniciadores","Desocupados con busqueda",Desocupados Ausentes sin ingreso y sin nexo laboral"))
+wtd.table (sociodem $ Clase3)
+sociodem $ Seg_Soc <-factor (sociodem $ Seg_Soc, niveles = c (1,2,3), etiquetas = c ( "Con Acceso","Sin Acceso","No Especificado"))
+wtd.table (sociodem $ Seg_Soc)
+sociodem $ Rama <-factor (sociodem $ Rama, niveles = c (1,2,3,4,5,6,7), etiquetas = c ( "Construccion", "Industruia Manufacturera"_
+"Comercio","Servicios","Otros","Agropecuario","No Especificado"))
+wtd.table (sociodem $ Rama)
+sociodem $ POS_OCU <-factor (sociodem $ POS_OCU, los niveles de c = (1,2,3,4,5), etiquetas = c ( "Subordinados y Remunerados", "Empleadores", "cuenta propia", "Sin Pago", "NORDESTE"))
+wtd.table (sociodem $ POS_OCU)
