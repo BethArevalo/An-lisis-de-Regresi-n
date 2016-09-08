@@ -1,0 +1,26 @@
+esta<-c(1.2,1.23,1.19,1.32,1.28,1.252,1.17,1.29,1.33,1.15)
+eco<-c(110,130,108,167,156,115,104,138,170,107)
+mod1<-lm(esta~eco)
+summary(mod1)$coefficients
+#se tiene un ajuste
+esta=.9323+.0023 eco
+#los valore de pvalue son inferiores a .05:
+  #la relacion entre las variables es positiva
+  #por cada peso de ingreso que aumenta el padre o madre, aumenta la estatura .0023
+  #el eerror estandar residual es .0198: permite medir la calidad del modelo
+  #con este error generamos los intervalos de confianza
+  #los cuales complementan la informacion sobre las estimaciones
+confint(mod1,level = .95)
+#b1 se encuentra en el intervalo (.0015,.0030)
+#al interpretar la variable dependiente se utiliza la tabla anova
+anova(mod1)
+#la variablilidad explicada por el modelo es 
+#F es mayor a 1 y p-value<.05
+#con estas revisiones se puede mencionar que se rechaza
+#la hipotesis nula de F=1
+summary(mod1)
+#al rededor del 91% de la variable "estatura" es explicada por la recta ajustada
+base1<-data.frame(eco,esta)
+base1$fitted.mod1<-fitted(mod1)
+base1$residuals.mod1<-residuals(mod1)
+base1$rstudent.mod1<-rstudent(mod1)
