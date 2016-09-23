@@ -5,6 +5,6 @@ Coahuila<-subset(datos,datos$ENT=="05")
 Coahuila$SEX<-factor(Coahuila$SEX,levels=c(1,2),labels=c("Hombres","Mujeres"))
 table(Coahuila$SEX)
 
-Coahuila1<- subset(Coahuila, Coahuila$CS_P13_1 == "99") 
+Coahuila1<- subset(Coahuila, Coahuila$CS_P13_1 == "08") 
 table(Coahuila1$SEX)
-CoahuilaJuarez<-subset(Coahuila1,Coahuila1$SEX=="1"|Coahuila1$SEX=="2")
+
