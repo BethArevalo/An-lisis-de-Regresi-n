@@ -1,0 +1,34 @@
+#modelo de regresion multiple
+capacidad<-c(4330,5500,5500,4700,5200,5500,4700,5500,5800,5000) #variable dependiente
+calidad<-c(2,3,4,3,4,4,4,5,5,5) #variable dependiente
+precio<-c(190,219,249,249,250,340,289,395,439,525) #variable dependiente
+mochil<-data.frame(precio,capacidad,calidad)
+michil1<-mochil[c(-5,-7,-10), ]#elimina observaciones
+#obtenemos matriz de correlación
+cor(mochil,use="everything",method = "pearson")
+#las variables tienen correlaciones diversas
+#aplicamos un modelo
+modmo<- lm(precio~capacidad+capacidad)
+summary(modmo)
+#la r2 ajustada de .7 implica que la recta de regresion explica el 70% de la variabilidad de los datos
+#el p-value y la f arrojan un buen ajuste (F>1 y pvvalue<.05)
+#esto significa que nuestro modelo es aceptable
+#observando graficamente los supuestos:
+#primero los valores residuales
+plot(modmo,which = 1,pch=3)
+# en esta grafica se espera que los residuos se distribuyan sin patron
+#una tendencia en la variabilidad sugiere que la varianza esta relacionada con la media
+#esto viola el supuesto de varianza constante
+plot(modmo,which=2,pch=3)#grafica de normalidad
+#se espera que los residuos tipificados esten al rededor de la linea
+#se observa que si hay una distribucion normal
+plot(modmo,which=3,pch=3)
+#aqui podemos ver si los residuos se distribuyen constantes en los valores ajustados
+plot(modmo,which=5,pch=3)
+#expone la importancia de cada observacion en el modelo
+#en esta distancia el grafico muestra las variables que pueden impactar el modelo
+#por lo que se sugiere eliminarlas
+View(michil1)
+cor(michil1,use = "everything",method="pearson")
+modmo1<-(lm(precio~calidad+capacidad,data = michil1))
+summary(modmo1)
